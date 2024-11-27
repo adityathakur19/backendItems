@@ -32,7 +32,7 @@ const upload = multer({
 const validateProduct = [
     body('itemName').trim().notEmpty().withMessage('Item name is required'),
     body('sellPrice').isFloat({ min: 0 }).withMessage('Sell price must be a positive number'),
-    body('type').isIn(['Veg', 'Non-Veg']).withMessage('Invalid product type'),
+    body('type').isIn(['Veg', 'Non-Veg', 'Beverage']).withMessage('Invalid product type'),
     body('primaryUnit').optional().isIn(['piece', 'kg', 'gram', '']),
 ];
 
