@@ -12,7 +12,7 @@ const validateProduct = [
 ];
 
 // Create product
-router.post('/products', validateProduct, async (req, res) => {
+router.post('/', validateProduct, async (req, res) => {
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -68,7 +68,7 @@ router.post('/products', validateProduct, async (req, res) => {
 });
 
 // Update product
-router.put('/products/:id', validateProduct, async (req, res) => {
+router.put('/:id', validateProduct, async (req, res) => {
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -126,7 +126,7 @@ router.put('/products/:id', validateProduct, async (req, res) => {
 
 
 // Get all products
-router.get('/products', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const products = await Product.find().sort({ createdAt: -1 });
         res.status(200).json(products);
@@ -139,7 +139,7 @@ router.get('/products', async (req, res) => {
 });
 
 // Delete a product
-router.delete('/products/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(req.params.id);
         
