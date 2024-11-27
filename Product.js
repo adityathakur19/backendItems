@@ -1,59 +1,45 @@
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-    itemName: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    type: {
-        type: String,
-        enum: ['Veg', 'Non-Veg'],
-        default: 'Veg',
-    },
-    sellPrice: {
-        type: Number,
-        required: true,
-        min: 0,
-    },
-    gstEnabled: {
-        type: Boolean,
-        default: false,
-    },
-    gstPercentage: {
-        type: Number,
-        default: 0,
-    },
-    gstAmount: {
-        type: Number,
-        default: 0,
-    },
-    totalPrice: {
-        type: Number,
-        required: true,
-        min: 0,
-    },
-    primaryUnit: {
-        type: String,
-        enum: ['piece', 'kg', 'gram', ''],
-    },
-    customUnit: {
-        type: String,
-        trim: true,
-    },
-    barcode: {
-        type: String,
-        unique: true,
-    },
-    image: {
-        type: String, // Store the image URL or path as a string
-        required: false, // Set to true if image upload is mandatory
-        trim: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-});
+  itemName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  sellPrice: {
+    type: Number,
+    required: true
+  },
+  primaryUnit: {
+    type: String
+  },
+  customUnit: {
+    type: String
+  },
+  type: {
+    type: String,
+    enum: ['Veg', 'Non-Veg','Beverage'],
+    default: 'Veg'
+  },
+  gstEnabled: {
+    type: Boolean,
+    default: false
+  },
+  gstPercentage: {
+    type: Number,
+    default: 0
+  },
+  gstAmount: {
+    type: Number,
+    default: 0
+  },
+  totalPrice: {
+    type: Number
+  },
+  imageUrl: {
+    type: String, // Add this field to store Cloudinary image URL
+    default: '' 
+  }
+}, { timestamps: true });
 
 module.exports = mongoose.model('Product', ProductSchema);
