@@ -30,11 +30,9 @@ mongoose
     .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/parties', require('./routes/partyRoutes'));
-app.use('/api/products', require('./routes/productRoutes'));
-app.use('/api/sales', require('./routes/salesRoutes'));
-app.use('/api/estimates', require('./routes/estimateRoutes'));
-app.use('/api/purchases', require('./routes/purchaseRoute'));
+
+app.use('/api/products', require('./productRoutes'));
+
 
 // 404 Error handler for undefined routes
 app.use((req, res, next) => {
