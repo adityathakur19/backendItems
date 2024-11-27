@@ -63,7 +63,7 @@ const uploadToCloudinary = async (file) => {
 };
 
 // Create product route
-router.post('/products', upload.single('image'), validateProduct, async (req, res) => {
+router.post('/', upload.single('image'), validateProduct, async (req, res) => {
     // Validate input
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -126,7 +126,7 @@ router.post('/products', upload.single('image'), validateProduct, async (req, re
 });
 
 // Update product route
-router.put('/products/:id', upload.single('image'), validateProduct, async (req, res) => {
+router.put('/:id', upload.single('image'), validateProduct, async (req, res) => {
     // Validate input
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -204,7 +204,7 @@ router.put('/products/:id', upload.single('image'), validateProduct, async (req,
 });
 
 // Delete product route with image cleanup
-router.delete('/products/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const productId = req.params.id;
 
@@ -242,7 +242,7 @@ router.delete('/products/:id', async (req, res) => {
 });
 
 // Get all products
-router.get('/products', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const products = await Product.find().sort({ createdAt: -1 });
         res.status(200).json(products);
