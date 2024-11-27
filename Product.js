@@ -36,7 +36,7 @@ const ProductSchema = new mongoose.Schema({
   totalPrice: {
     type: Number
   },
-  imageUrl: {
+  image: {
     type: String, // Add this field to store Cloudinary image URL
     default: '' 
   }
