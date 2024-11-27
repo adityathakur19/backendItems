@@ -4,51 +4,56 @@ const ProductSchema = new mongoose.Schema({
     itemName: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     type: {
         type: String,
         enum: ['Veg', 'Non-Veg'],
-        default: 'Veg'
+        default: 'Veg',
     },
     sellPrice: {
         type: Number,
         required: true,
-        min: 0
+        min: 0,
     },
     gstEnabled: {
         type: Boolean,
-        default: false
+        default: false,
     },
     gstPercentage: {
         type: Number,
-        default: 0
+        default: 0,
     },
     gstAmount: {
         type: Number,
-        default: 0
+        default: 0,
     },
     totalPrice: {
         type: Number,
         required: true,
-        min: 0
+        min: 0,
     },
     primaryUnit: {
         type: String,
-        enum: ['piece', 'kg', 'gram', '']
+        enum: ['piece', 'kg', 'gram', ''],
     },
     customUnit: {
         type: String,
-        trim: true
+        trim: true,
     },
     barcode: {
         type: String,
-        unique: true
+        unique: true,
+    },
+    image: {
+        type: String, // Store the image URL or path as a string
+        required: false, // Set to true if image upload is mandatory
+        trim: true,
     },
     createdAt: {
         type: Date,
-        default: Date.now
-    }
+        default: Date.now,
+    },
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
