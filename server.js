@@ -10,12 +10,8 @@ const app = express();
 
 // Middleware
 // Configure CORS with explicit options
-app.use(
-    cors({
-        origin: 'http://localhost:3000', // Allow requests from the frontend
-        credentials: true,              // Allow credentials (cookies, etc.)
-    })
-);
+app.use(cors()); // Allow all origins
+
 
 // Parse incoming JSON requests
 app.use(express.json());
